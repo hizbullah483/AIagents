@@ -1,41 +1,25 @@
 graph = {
-    "Tehran" : ["Baghdad","Istanbul"],
-    "Baghdad" : ["Cairo"],
-    "Istanbul" : ["Berlin"],
-    "Berlin" : ["Washington"],
-    "Cairo" : ["Washington"],
-    "Washington" : []
+    'Tehran': ['Baghdad', 'Istanbul'],
+        'Baghdad': ['Cairo'],
+        'Istanbul': ['Berlin'],
+        'Cairo': ['Washington'],
+        'Berlin': ['Washington'],
+        'Washington': []
 }
 
-start = "Tehran"
-goal = "Washington"
-
-queue = []
+queue = [["Tehran"]]
 visited = []
-parent = {}
-
-queue.append(start)
-visited.append(start)
-parent[start] = None
 
 while len(queue) > 0:
-    current = queue.pop(0)
-    if current == goal:
+    currentpath = queue.pop(0)
+    currentlocation = currentpath[-1]
+    if currentlocation == "Washington":
+        print(currentpath)
         break
+    
+    if currentlocation not in visited:
+        visited.append(currentlocation)
 
-    neighbours = graph[current]
-
-    for city in neighbours:
-
-        if city not in visited:
-            queue.append(city)
-            visited.append(city)
-            parent[city] = current
-
-path = []
-current = goal
-while current != None:
-    path.append(current)
-    current = parent[current]
-path.reverse()
-print(path)
+        for neighbour in graph.get(currentlocation):
+            newpath = currentpath + [neighbour]
+            queue.append(newpath)
