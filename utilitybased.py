@@ -1,9 +1,9 @@
 class environment:
     def __init__(self):
         self.area = {
-            "rock A": {5,2},
-            "rock B": {9,8},
-            "rock C": {6,3}
+            "rock A": (5,2),
+            "rock B": (9,8),
+            "rock C": (6,3)
         }
 
     def percieve(self):
