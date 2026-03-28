@@ -5,7 +5,7 @@ def dls(graph,start,goal,limit):
   while len(stack) > 0:
       currentdepth,currentpath = stack.pop()
       if currentdepth > limit:
-          return 0
+          continue
       currentlocation = currentpath[-1]
       if currentlocation == goal:
           print("goal found at depth ",currentdepth,currentpath)
