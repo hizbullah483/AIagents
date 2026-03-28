@@ -14,8 +14,7 @@ visited = []
 while len(stack) > 0:
     currentdepth,currentpath = stack.pop()
     if currentdepth > limit:
-        print("depth exceeded. mission failed")
-        break
+        continue
     currentlocation = currentpath[-1]
 
     if currentlocation == "target":
