@@ -23,9 +23,10 @@ def bidenblast(graph,start,goal,width):
                 return
             
             for neighbour,pathcost in graph.get(currentlocation).items():
-                newpath = currentpath + [neighbour]
-                newg = currentg + pathcost
-                candidates.append((newg,newpath))
+                if neighbour not in currentpath:
+                    newpath = currentpath + [neighbour]
+                    newg = currentg + pathcost
+                    candidates.append((newg,newpath))
 
             candidates.sort(key=lambda x:x[0])
             queue = candidates[:width]
