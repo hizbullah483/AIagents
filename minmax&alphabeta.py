@@ -50,15 +50,42 @@ def minmax(node,depth,ismaxplayer):
             bestval = min(value,bestval)
         return bestval
     
+
+
 winner = minmax('A',0,False)
 print("winner is ",winner)
 
+def alphabeta(node,depth,alpha,beta,ismaxplayer):
+    if len(tree[node]) == 0:
+        return scores[node]
+    
+    if ismaxplayer:
+        bestval = float('-inf')
+        for child in tree[node]:
+            value = alphabeta(child,depth + 1,alpha,beta,False)
+            bestval = max(bestval,value)
+
+            alpha = max(alpha,bestval)
+            if beta <= alpha:
+                break
+        return bestval
+    
+    else:
+        bestval = float('inf')
+        for child in tree[node]:
+            value = alphabeta(child,depth + 1,alpha,beta,True)
+            bestval = min(bestval,value)
+
+            beta = min(beta,bestval)
+            if beta <= alpha:
+                break
+        return bestval
 
 
+winner = alphabeta('A',0,-999,999,False)
 
 
-
-
+print("winner is ",winner)
 
 
 
