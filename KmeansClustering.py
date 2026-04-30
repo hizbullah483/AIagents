@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 df = pd.read_csv('house-prices.csv')
 print(df.head())
 
-df.dropna()
+df = df.dropna()
 x = df[['SqFt','Bedrooms']]
 scaler = StandardScaler()
 xscaled = scaler.fit_transform(x)
