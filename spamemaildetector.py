@@ -5,7 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 
-df = pd.read_csv(r'C:\Users\hp\Documents\ailabpractice\spam.csv', encoding = 'latin-1')
+df = pd.read_csv(r'spam.csv', encoding = 'latin-1')
 df = df[['v1','v2']]
 
 x = df['v2']
